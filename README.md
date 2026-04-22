@@ -41,7 +41,7 @@ Data mentah diperoleh dari Open-Meteo Archive API yang menggabungkan data reanal
 
 Dataset tersedia dalam dua format agregasi temporal, masing-masing dirancang untuk tujuan analisis yang berbeda.
 
-### A. Dataset Harian (`dataset_iklim_dramaga_1980_2024.csv`)
+### A. Dataset Harian (`data/dataset_iklim_dramaga_1980_2024_completed.csv`)
 
 Dataset primer untuk pelatihan model machine learning. Setiap baris merepresentasikan satu hari pengamatan dengan kelompok fitur sebagai berikut.
 
