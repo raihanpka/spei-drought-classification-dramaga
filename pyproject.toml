@@ -1,0 +1,7 @@
+[project]
+name = "spei-drought-classification-dramaga"
+version = "1.0.0"
+description = "Klasifikasi Tingkat Kekeringan Agrometeorologi Berbasis Indeks SPEI Menggunakan Pendekatan Data Mining pada Data Iklim Harian Dramaga, Bogor Tahun 1980-2024"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
