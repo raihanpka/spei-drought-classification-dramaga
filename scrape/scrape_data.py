@@ -74,6 +74,6 @@ print(df.head())
 print(f"\nDimensi Data: {df.shape}")
 
 # 6. Simpan
-filename = 'dataset_iklim_dramaga_1980_2024.csv'
+filename = '../data/dataset_iklim_dramaga_1980_2024.csv'
 df.to_csv(filename, index=False)
 print(f"Data tersimpan sebagai {filename}")
