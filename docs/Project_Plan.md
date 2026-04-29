@@ -26,12 +26,12 @@ Precipitation-Evapotranspiration Index) dengan empat kelas: Normal, Ringan, Seda
 ### Checkpoint 2: Eksplorasi Data (EDA)
 > Status: belum dimulai
 
-- [ ] Cek distribusi dan statistik deskriptif tiap variabel
-- [ ] Deteksi missing value dan outlier (ERA5 jarang null, tapi perlu diverifikasi)
-- [ ] Plot time series suhu dan curah hujan 1980-2024 (tren jangka panjang)
-- [ ] Plot seasonal pattern per bulan (boxplot bulanan)
-- [ ] Heatmap korelasi antar variabel
-- [ ] Visualisasi pola El Nino (identifikasi tahun-tahun anomali: 1997, 2015, 2023)
+- [x] Cek distribusi dan statistik deskriptif tiap variabel
+- [x] Deteksi missing value dan outlier (ERA5 jarang null, tapi perlu diverifikasi)
+- [x] Plot time series suhu dan curah hujan 1980-2024 (tren jangka panjang)
+- [x] Plot seasonal pattern per bulan (boxplot bulanan)
+- [x] Heatmap korelasi antar variabel
+- [x] Visualisasi pola El Nino (identifikasi tahun-tahun anomali: 1997, 2015, 2023)
 
 ---
 
