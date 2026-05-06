@@ -41,7 +41,7 @@ Data mentah diperoleh dari Open-Meteo Archive API yang menggabungkan data reanal
 
 Dataset tersedia dalam dua format agregasi temporal, masing-masing dirancang untuk tujuan analisis yang berbeda.
 
-### A. Dataset Harian (`data/dataset_iklim_dramaga_1980_2024_completed.csv`)
+### Dataset Harian (`data/dataset_iklim_dramaga_1980_2024_completed.csv`)
 
 Dataset primer untuk pelatihan model machine learning. Setiap baris merepresentasikan satu hari pengamatan dengan kelompok fitur sebagai berikut.
 
@@ -101,12 +101,6 @@ Fitur-fitur berikut direkayasa secara langsung dari variabel iklim dasar untuk m
 |----------------------|---------|-------------------------------------------------------------------|
 | `drought_class`      | string  | Label kelas kekeringan berdasarkan nilai SPEI-30 (lihat definisi di bawah) |
 | `drought_class_code` | integer | Kode numerik kelas kekeringan: 0 = Normal, 1 = Ringan, 2 = Sedang, 3 = Parah |
-
----
-
-### B. Dataset Bulanan (`dataset_iklim_dramaga_1980_2024_monthly.csv`)
-
-Dataset agregasi untuk visualisasi tren jangka panjang dan dashboard geomap (Tableau, Kepler.gl). Nilai numerik diagregasi menggunakan fungsi yang sesuai dengan karakteristik masing-masing variabel: akumulasi untuk variabel fluks (curah hujan, ET0), rata-rata untuk variabel status (suhu, kelembapan tanah), dan nilai akhir periode untuk nilai SPEI jangka menengah dan panjang.
 
 ---
 
