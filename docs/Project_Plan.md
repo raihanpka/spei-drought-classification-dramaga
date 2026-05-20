@@ -67,24 +67,23 @@ Precipitation-Evapotranspiration Index) dengan empat kelas: Normal, Ringan, Seda
 ### Checkpoint 5: Modelling
 > Status: belum dimulai
 
-- [ ] Baseline model: Decision Tree (interpretable, benchmark awal)
-- [ ] Ensemble model: Random Forest, XGBoost, LightGBM
-- [ ] Time series model: LSTM atau GRU (tangkap dependensi temporal)
-- [ ] Evaluasi: F1-macro (prioritas karena kelas imbalanced), confusion matrix, ROC-AUC per kelas
-- [ ] Analisis feature importance dari model terbaik
+- [x] Baseline model: Decision Tree (interpretable, benchmark awal)
+- [x] Ensemble model: Random Forest, XGBoost, LightGBM
+- [x] Time series model: LSTM atau GRU (tangkap dependensi temporal)
+- [x] Evaluasi: F1-macro (prioritas karena kelas imbalanced), confusion matrix, ROC-AUC per kelas
+- [x] Analisis feature importance dari model terbaik
 
 ---
 
 ### Checkpoint 6: Visualisasi dan Dashboard
 > Status: belum dimulai
 
-- [ ] **Tableau:** dashboard eksploratif dari dataset bulanan
-  - Heatmap kalender drought class per tahun-bulan
-  - Time series SPEI-30 dengan highlight kelas kekeringan
-  - Bar chart distribusi kelas per dekade (1980an, 1990an, dst.)
 - [ ] **Streamlit:** dashboard prediktif
   - Input parameter iklim, output prediksi kelas kekeringan
   - Plot time series interaktif hasil prediksi model
+  - Heatmap kalender drought class per tahun-bulan
+  - Time series SPEI-30 dengan highlight kelas kekeringan
+  - Bar chart distribusi kelas per dekade (1980an, 1990an, dst.)
 
 ---
 
@@ -92,5 +91,5 @@ Precipitation-Evapotranspiration Index) dengan empat kelas: Normal, Ringan, Seda
 > Status: sebagian selesai
 
 - [x] README project plan (dokumen ini)
-- [ ] Notebook EDA (format .ipynb, terstruktur per section)
+- [x] Notebook EDA (format .ipynb, terstruktur per section)
 - [ ] Laporan akhir: metodologi, hasil, interpretasi, dan rekomendasi kebijakan
