@@ -24,7 +24,7 @@ Precipitation-Evapotranspiration Index) dengan empat kelas: Normal, Ringan, Seda
 ---
 
 ### Checkpoint 2: Eksplorasi Data (EDA)
-> Status: belum dimulai
+> Status: selesai
 
 - [x] Cek distribusi dan statistik deskriptif tiap variabel
 - [x] Deteksi missing value dan outlier (ERA5 jarang null, tapi perlu diverifikasi)
@@ -36,17 +36,17 @@ Precipitation-Evapotranspiration Index) dengan empat kelas: Normal, Ringan, Seda
 ---
 
 ### Checkpoint 3: Feature Engineering
-> Status: belum dimulai
+> Status: selesai
 
-- [ ] Hitung neraca air harian: `water_balance = precipitation_sum - et0_fao_evapotranspiration`
-- [ ] Hitung akumulasi rolling: `wb_30d`, `wb_90d`, `wb_180d`
-- [ ] Hitung SPEI-30, SPEI-90, SPEI-180 (normalisasi per bulan kalender, baseline 1981-2010)
-- [ ] Hitung anomali suhu bulanan terhadap baseline 1981-2010
-- [ ] Hitung `aridity_index = precipitation / ET0`
-- [ ] Hitung `soil_water_deficit` (ET0 dikurangi presipitasi, diklem pada 0)
-- [ ] Tambah fitur lag temporal (lag-1, lag-7, lag-30 untuk fitur kritis)
-- [ ] Tambah fitur siklus musiman (sin/cos bulan) untuk model yang tidak menangkap urutan waktu
-- [ ] Buat label target `drought_class` berdasarkan SPEI-30:
+- [x] Hitung neraca air harian: `water_balance = precipitation_sum - et0_fao_evapotranspiration`
+- [x] Hitung akumulasi rolling: `wb_30d`, `wb_90d`, `wb_180d`
+- [x] Hitung SPEI-30, SPEI-90, SPEI-180 (normalisasi per bulan kalender, baseline 1981-2010)
+- [x] Hitung anomali suhu bulanan terhadap baseline 1981-2010
+- [x] Hitung `aridity_index = precipitation / ET0`
+- [x] Hitung `soil_water_deficit` (ET0 dikurangi presipitasi, diklem pada 0)
+- [x] Tambah fitur lag temporal (lag-1, lag-7, lag-30 untuk fitur kritis)
+- [x] Tambah fitur siklus musiman (sin/cos bulan) untuk model yang tidak menangkap urutan waktu
+- [x] Buat label target `drought_class` berdasarkan SPEI-30:
   - 0 = Normal (SPEI lebih besar dari -0.50)
   - 1 = Kekeringan Ringan (-1.00 sampai -0.50)
   - 2 = Kekeringan Sedang (-1.50 sampai -1.00)
@@ -55,13 +55,12 @@ Precipitation-Evapotranspiration Index) dengan empat kelas: Normal, Ringan, Seda
 ---
 
 ### Checkpoint 4: Preprocessing dan Split Data
-> Status: belum dimulai
+> Status: selesai (terintegrasi di Checkpoint 3 & 5)
 
-- [ ] Buang 30 baris pertama (rolling window SPEI-30 belum terpenuhi)
-- [ ] Normalisasi fitur numerik (StandardScaler atau MinMaxScaler sesuai model)
-- [ ] Handle class imbalance: cek distribusi kelas, pertimbangkan SMOTE jika diperlukan
-- [ ] Split data: train (1980-2014) / validation (2015-2019) / test (2020-2024)
-  - Alasan: split temporal, bukan random, untuk menghindari data leakage
+- [x] Buang baris dengan NaN (otomatis oleh rolling window)
+- [x] Split data: temporal 80/20 (diekspor dari notebook Feature Engineering)
+- [x] Normalisasi fitur numerik (StandardScaler di notebook Modelling)
+- [x] Handle class imbalance: SMOTE diterapkan di notebook Modelling
 
 ---
 
