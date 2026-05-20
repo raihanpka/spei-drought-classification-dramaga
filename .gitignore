@@ -220,3 +220,6 @@ __marimo__/
 # Misc
 *.DS_Store
 *__MACOSX__
+
+# Custom Build Scripts
+build_*_notebook.py
