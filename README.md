@@ -156,6 +156,79 @@ Komputasi SPEI dalam dataset ini mengikuti alur berikut:
 
 ---
 
+## Alur Feature Engineering dan Modelling
+
+Notebook `notebooks/02_feature_engineering.ipynb` menghasilkan satu file utama, yaitu `data/dataset_featured_dramaga.csv`. File train dan test seperti `X_train.csv`, `X_test.csv`, `y_train.csv`, dan `y_test.csv` tidak disimpan sebagai output akhir karena split dapat dibuat ulang secara deterministik dari dataset featured.
+
+Notebook `notebooks/03_modelling.ipynb` membaca `dataset_featured_dramaga.csv`, lalu membuat temporal split 80 persen train dan 20 persen test lewat kode. Pendekatan ini menjaga alur data tetap jelas karena hanya ada satu dataset hasil feature engineering, sementara pembagian train dan test selalu dapat direproduksi dari urutan tanggal.
+
+Modelling utama menggunakan 14 fitur terpilih dari kelompok meteorologi dasar, rolling aggregate, agrometeorologi, dan fitur temporal. Untuk mengurangi dampak imbalance kelas, data train diproses dengan SMOTE setelah scaling. Data test tidak terkena SMOTE dan tetap mewakili periode akhir deret waktu.
+
+---
+
+## Forecast Risiko Kekeringan 30 Hari
+
+Selain klasifikasi kelas kekeringan harian, project ini menambahkan model forecast risiko untuk menjawab pertanyaan operasional berikut.
+
+**Apakah dalam 30 hari ke depan akan terjadi kekeringan minimal sedang?**
+
+Target forecast bernilai 1 jika dalam jendela H+1 sampai H+30 terdapat minimal satu hari dengan `spei_30d <= -1.0`. Jika tidak ada hari yang memenuhi kondisi tersebut, target bernilai 0. Target ini lebih stabil untuk horizon jauh dibanding memprediksi kelas tepat pada H+30, karena risiko dalam satu jendela waktu lebih relevan untuk early warning.
+
+Fitur forecast memakai kondisi yang sudah diketahui pada hari prediksi, termasuk fitur rolling historis, `water_balance`, `wb_30d`, `wb_90d`, `wb_180d`, `spei_30d`, `spei_90d`, dan `spei_180d`. Nilai masa depan hanya dipakai untuk membentuk target evaluasi, bukan sebagai input model.
+
+Evaluasi forecast dilakukan dengan urutan berikut.
+
+1. Dataset dibagi secara temporal menjadi train validation dan test akhir.
+2. Threshold probabilitas dipilih dari validation temporal di dalam periode training.
+3. Model dilatih ulang pada train validation.
+4. Evaluasi akhir dilakukan satu kali pada test akhir.
+
+Hasil evaluasi forecast risiko 30 hari pada test set adalah sebagai berikut.
+
+| Metrik | Nilai |
+|--------|-------|
+| Accuracy | 0,8312 |
+| Macro F1 | 0,8276 |
+| ROC AUC | 0,9011 |
+
+---
+
+## Modul Reusable
+
+Logic loading data, training model, forecasting, dan visualisasi dipisahkan ke folder `dramaga_drought` agar dapat digunakan ulang di notebook atau aplikasi Streamlit.
+
+| File | Fungsi |
+|------|--------|
+| `dramaga_drought/data.py` | Membaca dataset featured dan membuat temporal split |
+| `dramaga_drought/modelling.py` | Melatih model klasifikasi kekeringan |
+| `dramaga_drought/forecasting.py` | Melatih model forecast risiko kekeringan 30 hari |
+| `dramaga_drought/visualization.py` | Membuat plot confusion matrix, feature importance, dan forecast risiko |
+
+Contoh penggunaan singkat:
+
+```python
+from dramaga_drought import (
+    load_featured_dataset,
+    load_model_splits,
+    train_classification_models,
+    train_30d_risk_model,
+)
+
+df = load_featured_dataset()
+splits = load_model_splits()
+
+classification = train_classification_models(
+    splits["X_train"],
+    splits["y_train"],
+    splits["X_test"],
+    splits["y_test"],
+)
+
+forecast = train_30d_risk_model(df, horizon=30)
+```
+
+---
+
 ## Referensi
 
 * Allen, R. G., Pereira, L. S., Raes, D., dan Smith, M. (1998). *Crop Evapotranspiration: Guidelines for Computing Crop Water Requirements*. FAO Irrigation and Drainage Paper No. 56. Food and Agriculture Organization of the United Nations.
