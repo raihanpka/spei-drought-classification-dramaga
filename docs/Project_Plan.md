@@ -76,14 +76,14 @@ Precipitation-Evapotranspiration Index) dengan empat kelas: Normal, Ringan, Seda
 ---
 
 ### Checkpoint 6: Visualisasi dan Dashboard
-> Status: belum dimulai
+> Status: selesai
 
-- [ ] **Streamlit:** dashboard prediktif
-  - Input parameter iklim, output prediksi kelas kekeringan
-  - Plot time series interaktif hasil prediksi model
-  - Heatmap kalender drought class per tahun-bulan
-  - Time series SPEI-30 dengan highlight kelas kekeringan
-  - Bar chart distribusi kelas per dekade (1980an, 1990an, dst.)
+- [x] **Streamlit:** dashboard prediktif
+  - [x] Input parameter iklim, output prediksi kelas kekeringan
+  - [x] Plot time series interaktif hasil prediksi model
+  - [x] Heatmap kalender drought class per tahun-bulan
+  - [x] Time series SPEI-30 dengan highlight kelas kekeringan
+  - [x] Bar chart distribusi kelas per dekade (1980an, 1990an, dst.)
 
 ---
 
